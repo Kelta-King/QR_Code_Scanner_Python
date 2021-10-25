@@ -1,26 +1,15 @@
-# import the opencv library
+# Importing the OpenCV library
 import cv2
+# Reading the image using imread() function
+image = cv2.imread('road.jpg')
 
-# define a video capture object
-vid = cv2.VideoCapture(0)
+# Extracting the height and width of an image
+# h, w = image.shape[:2]
+# # Displaying the height and width
+# print("Height = {}, Width = {}".format(h, w))
+gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-while(True):
-	
-	# Capture the video frame
-	# by frame
-	ret, frame = vid.read()
-
-	# Display the resulting frame
-	cv2.imshow('frame', frame)
-	
-	# the 'q' button is set as the
-	# quitting button you may use any
-	# desired button of your choice
-	if cv2.waitKey(1) & 0xFF == ord('q'):
-		break
-
-# After the loop release the cap object
-vid.release()
-# Destroy all the windows
+cv2.imwrite('image.jpg', gray_image)
+cv2.waitKey(0)
 cv2.destroyAllWindows()
 
